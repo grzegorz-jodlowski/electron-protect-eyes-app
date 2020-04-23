@@ -1,18 +1,54 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+const workTime = 12;
+const restTime = 20;
+
 class App extends React.Component {
   state = {
-    status: 'rest',
-    time: 30,
+    status: 'off',
+    time: workTime,
     timer: null,
   }
 
 
-  formatTime(seconds) {
+  formatTime = (seconds) => {
     const min = Math.floor(seconds / 60);
     const sec = seconds - (min * 60);
     return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+  }
+
+  step = () => {
+    this.setState({
+      ...this.state,
+      time: this.state.time - 1,
+    })
+    if (this.state.time === 0) {
+      if (this.state.status === 'work') {
+        this.setState({
+          ...this.state,
+          time: restTime,
+          status: 'rest',
+        })
+      } else if (this.state.status === 'rest') {
+        this.setState({
+          ...this.state,
+          time: workTime,
+          status: 'work',
+        })
+      }
+      else {
+        console.log('ups!')
+      }
+    }
+  }
+
+  startTimer = () => {
+    this.setState({
+      timer: setInterval(this.step, 1000),
+      time: workTime,
+      status: 'work'
+    })
   }
 
   render() {
@@ -23,7 +59,7 @@ class App extends React.Component {
         {(this.state.status === 'work') && <img src="./images/work.png" />}
         {(this.state.status === 'rest') && <img src="./images/rest.png" />}
         {(this.state.status !== 'off') && <div className="timer">{this.formatTime(this.state.time)}</div>}
-        {(this.state.status === 'off') && <button className="btn">Start</button>}
+        {(this.state.status === 'off') && <button onClick={this.startTimer} className="btn">Start</button>}
         {(this.state.status !== 'off') && <button className="btn">Stop</button>}
         <button className="btn btn-close">X</button>
       </div>
