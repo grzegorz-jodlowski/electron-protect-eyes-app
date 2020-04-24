@@ -18,6 +18,8 @@ class App extends React.Component {
     return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
   }
 
+  playBell = () => new Audio('./sounds/bell.wav').play();
+
   step = () => {
     this.setState({
       ...this.state,
@@ -30,12 +32,14 @@ class App extends React.Component {
           time: restTime,
           status: 'rest',
         })
+        this.playBell();
       } else if (this.state.status === 'rest') {
         this.setState({
           ...this.state,
           time: workTime,
           status: 'work',
         })
+        this.playBell();
       }
       else {
         console.log('ups!')
