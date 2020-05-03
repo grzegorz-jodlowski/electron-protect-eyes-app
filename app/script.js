@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const workTime = 12;
+const workTime = 1200;
 const restTime = 20;
 
 class App extends React.Component {
