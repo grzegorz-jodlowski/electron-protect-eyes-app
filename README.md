@@ -5,7 +5,7 @@
 
 
 # <p align="center">👁‍🗨 Protect your eyes desktop app (Electron)</p>
-<p align="center">Project for learning Electron (building desktop apps using JavaScript, HTML and CSS))</p>
+<p align="center">Project for learning Electron (building desktop apps using JavaScript, HTML and CSS)</p>
 
 </br>
 
@@ -21,7 +21,7 @@
 
 ## <a name="about"></a>What's this project about?
 
-This is desktop application for measuring the time spent in front of the monitor. Informs you about the time for a break and looking far ahead for 20 seconds. For the good health of your eyes :)
+This is desktop application for measuring the time spent in front of the monitor. Informs about the time for a break and looking far ahead for 20 seconds. For the good health of your eyes :)
 
 </br>
 
@@ -32,13 +32,20 @@ This is desktop application for measuring the time spent in front of the monitor
 - JavaScript
 - React
 - GIT
+- npm
 
 </br>
 
 ## <a name="what"></a>What I learned?
-- w
-
-
+- work with [Electron](https://www.electronjs.org/docs) - tool for creating desktop window applications using HTML, CSS and JavaScript,
+- check Electron's supported features and functions ([Can I use?](https://caniuse.com/) - check for Google Chrom),
+- use tamplets to get started with Electron (eg. [electron-quick-start](https://github.com/electron/electron-quick-start)),
+- combine work with Electron and React,
+- use [electron-packager](https://github.com/electron/electron-packager) to bundle Electron-based application into folders ready for distribution on OS,
+- difference between `npm` and `yarn`,
+- how does the [npmjs.com](https://www.npmjs.com/) website work,
+- create and publish my own `npm` package ([id-generator](https://www.npmjs.com/package/@grzegorz-jodlowski/npm-package-id-generator)),
+- how the npm package version naming system is built (eg. "^16.8.6" - major, minor, patch).
 
 </br>
 
@@ -72,6 +79,21 @@ app.on('ready', main);
 app.on('window-all-closed', function () {
   app.quit();
 });
+```
+- npm-package-id-generator:
+
+```js
+const randomID = (idLength) => {
+  let id = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charsAmount = characters.length;
+  for (let i = 0; i < idLength; i++) {
+    id += characters.charAt(Math.floor(Math.random() * charsAmount));
+  }
+  return id;
+}
+
+module.exports = randomID;
 ```
 
 </br>
