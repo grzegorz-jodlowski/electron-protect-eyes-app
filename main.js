@@ -5,7 +5,6 @@ const { app, BrowserWindow } = require('electron');
 
 function main() {
 
-  // create new window
   let mainWindow = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true
@@ -15,7 +14,6 @@ function main() {
     frame: false,
   })
 
-  // load app/index.html as the window content
   mainWindow.loadFile(path.join('app', 'index.html'));
 }
 

@@ -11,7 +11,6 @@ class App extends React.Component {
     timer: null,
   }
 
-
   formatTime = (seconds) => {
     const min = Math.floor(seconds / 60);
     const sec = seconds - (min * 60);
